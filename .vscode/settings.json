@@ -1,0 +1,37 @@
+{
+  "files.associations": {
+    "*.def": "javascript",
+    "*.def.ext": "javascript",
+    "*.meta": "jsonc",
+    "*.meta.*": "jsonc",
+    "*.template": "handlebars",
+    "*.json": "jsonc"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "*.meta"
+      ],
+      "url": "https://unitybase.info/models/UB/schemas/entity.schema.json"
+    },
+    {
+      "fileMatch": [
+        "ubConfig*.json"
+      ],
+      "url": "https://unitybase.info/models/UB/schemas/ubConfig.schema.json"
+    },
+    {
+      "fileMatch": [
+        "_schedulers.json"
+      ],
+      "url": "https://unitybase.info/models/UB/schemas/scheduler.config.schema"
+    }
+  ],
+  "files.exclude": {
+    "logs": false,
+  },
+  "editor.tabSize": 2,
+  "cSpell.words": [
+    "them"
+  ]
+}
