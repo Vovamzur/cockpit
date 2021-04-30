@@ -1,12 +1,14 @@
 {
-    "version": "0.1",
+    "version": "1.0.0",
     "requires": {
-        "cockpit": "137"
+        "cockpit": "215"
     },
 
-    "tools": {
+    "dashboard": {
         "index": {
-            "label": "Starter Kit"
+            "label": "Unitybase",
+            "order": 30,
+            "icon": "fa-tachometer"
         }
     }
 }
