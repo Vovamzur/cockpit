@@ -1,14 +1,13 @@
 {
-    "version": "1.0.0",
-    "requires": {
-        "cockpit": "215"
-    },
-
-    "dashboard": {
-        "index": {
-            "label": "Unitybase",
-            "order": 30,
-            "icon": "fa-tachometer"
-        }
+  "version": "1.0.0",
+  "requires": {
+    "cockpit": "215"
+  },
+  "dashboard": {
+    "index": {
+      "label": "Unitybase",
+      "order": 30,
+      "icon": "fa-tachometer"
     }
+  }
 }

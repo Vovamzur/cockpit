@@ -86,7 +86,7 @@ if (production) {
 }
 
 /* keep this in sync with cockpit.git */
-const babel_loader = {
+const babelLoader = {
   loader: 'babel-loader',
   options: {
     presets: [
@@ -129,7 +129,7 @@ module.exports = {
       },
       {
         exclude: /node_modules/,
-        use: babel_loader,
+        use: babelLoader,
         test: /\.(js|jsx)$/
       },
       /* HACK: remove unwanted fonts from PatternFly's css */
