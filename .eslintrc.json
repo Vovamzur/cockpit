@@ -26,5 +26,8 @@
     "globals": {
         "require": false,
         "module": false
+    },
+    "rules": {
+        "react/jsx-handler-names": false
     }
 }

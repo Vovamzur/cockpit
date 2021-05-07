@@ -121,12 +121,12 @@ module.exports = {
   devtool: 'source-map',
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        test: /\.(js|jsx)$/
-      },
+      // {
+      //   enforce: 'pre',
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      //   test: /\.(js|jsx)$/
+      // },
       {
         exclude: /node_modules/,
         use: babelLoader,
