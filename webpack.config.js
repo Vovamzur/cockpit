@@ -28,16 +28,8 @@ const output = {
   sourceMapFilename: '[file].map'
 }
 
-/*
- * Note that we're avoiding the use of path.join as webpack and nodejs
- * want relative paths that start with ./ explicitly.
- *
- * In addition we mimic the VPATH style functionality of GNU Makefile
- * where we first check builddir, and then srcdir.
- */
-
-function vpath (/* ... */) {
-  const filename = Array.prototype.join.call(arguments, path.sep)
+function vpath (...args) {
+  const filename = Array.prototype.join.call(args, path.sep)
   let expanded = builddir + path.sep + filename
   if (fs.existsSync(expanded)) {
     return expanded

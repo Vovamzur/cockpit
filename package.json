@@ -12,6 +12,11 @@
     "eslint": "eslint --ext .js --ext .jsx src/",
     "eslint:fix": "eslint --fix --ext .js --ext .jsx src/"
   },
+  "engines": {
+    "node": "14.4.0",
+    "vscode": "^1.22.0",
+    "npm": "6.134.5"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.0",

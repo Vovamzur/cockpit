@@ -10,7 +10,6 @@ import {
   TooltipPosition,
   Badge
 } from '@patternfly/react-core'
-import PropTypes from 'prop-types'
 
 import cockpit from 'cockpit'
 
@@ -152,18 +151,4 @@ export class ServiceRow extends React.PureComponent {
       </DataListItem>
     )
   }
-}
-
-ServiceRow.propTypes = {
-  Id: PropTypes.bool,
-  shortId: PropTypes.bool,
-  AutomaticStartup: PropTypes.bool,
-  UnitFileState: PropTypes.bool,
-  LoadState: PropTypes.bool,
-  HasFailed: PropTypes.bool,
-  CombinedState: PropTypes.bool,
-  LastTriggerTime: PropTypes.bool,
-  NextRunTime: PropTypes.bool,
-  Description: PropTypes.bool,
-  isTimer: PropTypes.bool
 }

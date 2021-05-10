@@ -258,6 +258,10 @@ export class ServicesPage extends React.Component {
     return tp != -1 && (tp + 1 == sp || tp + 1 == id.length);
   }
 
+  isUnitybaseServer(id) {
+    return id.includes('unitybase')
+  }
+
   listUnits() {
     if (cockpit.hidden) return this.listFailedUnits();
 
@@ -276,7 +280,9 @@ export class ServicesPage extends React.Component {
           const path = result[6];
           const unit_id = result[0];
 
-          if (!this.isUnitHandled(unit_id)) return;
+          if (!this.isUnitHandled(unit_id) || !this.isUnitybaseServer(unit_id)) {
+            return;
+          }
 
           if (!this.seenPaths.has(path)) this.seenPaths.add(path);
 
@@ -395,10 +401,15 @@ export class ServicesPage extends React.Component {
     const failed_a = unit_a.HasFailed ? 1 : 0;
     const failed_b = unit_b.HasFailed ? 1 : 0;
 
-    if (!unit_a || !unit_b) return false;
+    if (!unit_a || !unit_b) {
+      return false;
+    }
 
-    if (failed_a != failed_b) return failed_b - failed_a;
-    else return unit_a_t[0].localeCompare(unit_b_t[0]);
+    if (failed_a != failed_b) {
+      return failed_b - failed_a;
+    }
+
+    return unit_a_t[0].localeCompare(unit_b_t[0]);
   }
 
   addSocketProperties(socket_unit, path, unit) {
@@ -728,12 +739,15 @@ export class ServicesPage extends React.Component {
           !(
             unit.Id &&
             activeTab &&
-            unit.Id.match(cockpit.format(".$0$", activeTab))
+            (activeTab === 'service' ? unit.Id.startsWith('unitybase') : true) &&
+            (activeTab === 'databases' ? true : true)
           )
         )
           return false;
 
-        if (unit.LoadState == "not-found") return false;
+        if (unit.LoadState === "not-found") {
+          return false;
+        }
 
         if (
           currentTextFilter &&
@@ -741,8 +755,9 @@ export class ServicesPage extends React.Component {
             (unit.Description &&
               unit.Description.toLowerCase().indexOf(
                 currentTextFilter.toLowerCase()
-              ) != -1) ||
-            unit_id.toLowerCase().indexOf(currentTextFilter.toLowerCase()) != -1
+              ) !== -1) ||
+            unit_id.toLowerCase().indexOf(currentTextFilter.toLowerCase()) !==
+              -1
           )
         )
           return false;
@@ -792,14 +807,6 @@ export class ServicesPage extends React.Component {
             </FormSelect>
           </ToolbarItem>
         </ToolbarGroup>
-        {activeTab == "timer" && (
-          <>
-            <ToolbarItem variant="separator" />
-            <ToolbarItem>
-              {this.state.privileged && <CreateTimerDialog />}
-            </ToolbarItem>
-          </>
-        )}
       </>
     );
 
@@ -827,7 +834,7 @@ export class ServicesPage extends React.Component {
             </Toolbar>
             <ServicesList
               key={cockpit.format("$0-list", activeTab)}
-              isTimer={activeTab == "timer"}
+              isTimer={activeTab === "timer"}
               units={units}
             />
             {units.length == 0 && (

@@ -16,11 +16,8 @@ export const service_tabs_suffixes = [
 
 export function ServiceTabs({ onChange, activeTab, tabErrors }) {
   const service_tabs = {
-    service: _("System services"),
-    target: _("Targets"),
-    socket: _("Sockets"),
-    timer: _("Timers"),
-    path: _("Paths"),
+    service: _("Servers"),
+    databases: _("Databases")
   };
 
   const [activeItem, setActiveItem] = useState(activeTab);
@@ -41,7 +38,7 @@ export function ServiceTabs({ onChange, activeTab, tabErrors }) {
               itemId={key}
               key={key}
               preventDefault
-              isActive={activeItem == key}
+              isActive={activeItem === key}
             >
               <a href="#">
                 {service_tabs[key]}
@@ -56,6 +53,7 @@ export function ServiceTabs({ onChange, activeTab, tabErrors }) {
     </Nav>
   );
 }
+
 ServiceTabs.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
